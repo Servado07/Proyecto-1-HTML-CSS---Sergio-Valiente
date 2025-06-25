@@ -40,6 +40,7 @@ footer {
   display: block;
   text-align: center;
   text-align: block;
+  margin-top: 5px;
 }
 
 .info {
@@ -65,6 +66,7 @@ footer {
   align-items: inline-block;
   text-align: center;
   margin-right: 200px;
+  
 }
 
 .youtube-video {
@@ -89,3 +91,9 @@ footer {
   text-align: center;
   margin-top: 200px;
 }
+
+.links {
+  text-decoration: none;
+  color: inherit;
+}
+
