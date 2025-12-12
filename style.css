@@ -8,17 +8,40 @@
   --primary-font-family: "Nunito", sans-serif;
   --secondary-font-family: "Ms Madi", sans-serif;
   --spacing: 35px;
+  /* Variable para velocidad de efectos */
+  --transition-speed: 0.3s;
 }
 
-/* ESTILOS PAGINA PRINCIPAL */
+/* === GENERAL Y SCROLLBAR === */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scrollbar personalizada (Estética) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--primary-color);
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 body {
   height: 100%;
   margin: 0;
   padding: 0;
   background-color: var(--primary-color);
   animation: fadeIn 1.5s ease-out;
+  overflow-x: hidden; /* Evita scroll lateral indeseado */
 }
 
+/* === HEADER (ESCRITORIO - ORIGINAL) === */
 .index_header {
   position: relative;
   background-image: url(/assets/backgrounds/compu.jpg);
@@ -50,27 +73,50 @@ body > header > nav > ul {
   font-family: Nixie One, sans-serif;
   margin-right: 100px;
   font-size: 30px;
+  transition: text-shadow var(--transition-speed) ease;
+}
+
+#inicio:hover {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
 
 ul {
   list-style-type: none;
+  padding: 0;
 }
 
 a {
   text-decoration: none;
   color: inherit;
+  position: relative;
 }
 
-/* Duracion de la animacion: 1.5s para las imagenes */
+/* Efecto subrayado animado */
+body > header > nav > ul > li > a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: var(--secondary-color);
+  transition: width var(--transition-speed) ease;
+}
+
+body > header > nav > ul > li > a:hover::after {
+  width: 100%;
+}
+
 img {
     transition: transform 0.3s ease;
+    max-width: 100%; /* Evita que las imágenes rompan el ancho en móvil */
 }
 
 h1 {
   font-family: var(--secondary-font-family);
   font-size: 150px;
   color: var(--secondary-color);
-  margin-left: 100px;
+  margin-left: 100px; /* Mantiene tu posición original a la izquierda */
   margin-bottom: 150px;
 }
 
@@ -84,6 +130,7 @@ body > header > section > p {
 .header-content {
   position: absolute;
   text-align: center;
+  /* NO añadimos width 100% aquí para respetar tu diseño original de escritorio */
 }
 
 h2 {
@@ -93,11 +140,12 @@ h2 {
   text-align: center;
 }
 
+/* === COLUMNAS / TARJETAS (ESCRITORIO + BOX FIX) === */
 .columns {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: flex-start;
+  align-items: stretch; /* Mantiene todas las tarjetas del mismo alto */
   gap: var(--spacing);
   margin: var(--spacing);
   margin-top: 150px;
@@ -106,14 +154,22 @@ h2 {
 
 .columns .about {
   max-width: 350px;
+  width: 100%;
   padding: var(--spacing);
   border-radius: 12px;
-  box-sizing: border-box¡;
+  box-sizing: border-box; /* Corrección del typo */
   border: var(--secondary-color) 1px solid;
-  height: 400px;
+  min-height: 400px; /* Altura mínima para que crezca si hay texto */
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between; /* Distribuye el contenido uniformemente */
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.columns .about:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
 }
 
 .icon-about {
@@ -129,6 +185,7 @@ body > main > div > section > p {
   text-align: center;
 }
 
+/* === FOOTER === */
 footer {
   background-color: var(--secondary-color);
   color: var(--primary-color);
@@ -150,26 +207,30 @@ footer {
 .social-icon {
   width: 25px;
   height: 25px;
+  transition: transform 0.2s ease;
 }
 
-/* ESTILOS PAGINA GALERIA */
+.social-icon:hover {
+  transform: scale(1.2);
+}
 
-/* Estilos pagina galeria */
+/* === GALERÍA (ESCRITORIO - ORIGINAL) === */
 #page_4_body {
   display: grid;
+  /* Mantenemos tu 500px original para escritorio */
   grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
   grid-auto-rows: 500px;
   gap: var(--spacing);
   padding: var(--spacing);
 }
 
-/* Estilos para las imagenes de la galeria */
 #page_4_body img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
   border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(255,255,255,0.1);
 }
 
 .p_page_4 {
@@ -181,8 +242,7 @@ footer {
   margin-bottom: 100px;
 }
 
-/* ESTILOS PAGINA REDES SOCIALES */
-
+/* === REDES SOCIALES === */
 .p_page_3 {
   font-family: var(--primary-font-family);
   color: var(--secondary-color);
@@ -206,6 +266,12 @@ footer {
   width: 200px;
   height: 200px;
   padding: 100px;
+  transition: transform var(--transition-speed) ease, filter var(--transition-speed) ease;
+}
+
+.social-icon-rrss:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
 }
 
 .youtube_video {
@@ -215,10 +281,11 @@ footer {
   margin-right: auto;
   margin-top: 50px;
   width: 80%;
-  height: 900px;
+  height: 900px; /* Mantenemos tu altura original en desktop */
+  max-width: 100%;
 }
 
-/* Estilos para el formulario de suscripción */
+/* === FORMULARIO === */
 form {
   display: flex;
   flex-direction: column;
@@ -236,6 +303,17 @@ textarea {
   border-radius: 5px;
   border: 1px solid var(--secondary-color);
   font-family: var(--primary-font-family);
+  background-color: transparent;
+  color: var(--secondary-color);
+  transition: all var(--transition-speed) ease;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  background-color: rgba(255,255,255,0.1);
+  box-shadow: 0 0 10px rgba(255,255,255,0.3);
+  transform: scale(1.02);
 }
 
 button {
@@ -248,20 +326,32 @@ button {
   cursor: pointer;
   margin-bottom: 100px;
   margin-top: 20px;
+  transition: all var(--transition-speed) ease;
 }
 
-/* ESTILOS PAGINA PROYECTOS */
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
+}
 
+/* === PROYECTOS (ESCRITORIO) === */
 .columns .project {
   max-width: 350px;
   padding: var(--spacing);
   border-radius: 12px;
-  box-sizing: border-box¡;
+  box-sizing: border-box;
   border: var(--secondary-color) 1px solid;
-  height: 600px;
+  min-height: 600px; /* Altura original + fix */
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.columns .project:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
 }
 
 h2.h2_project {
@@ -272,8 +362,7 @@ h2.h2_project {
   margin-bottom: 100px;
 }
 
-/* ESTILOS PAGINA "SOBRE MÍ" */
-
+/* === SOBRE MÍ (ESCRITORIO) === */
 .about_page_1 {
   display: flex;
   align-items: flex-start;
@@ -304,60 +393,145 @@ h2.h2_project {
   height: 500px;
   margin-bottom: 100px;
   margin-left: 100px;
+  animation: float 6s ease-in-out infinite;
 }
 
-/* Media para algunos elementos se vea bien en dispositivos moviles */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+img:hover {
+  transform: scale(1.05);
+}
+
+
+/* ==========================================================================
+   MEDIA QUERIES - RESPONSIVE (MÓVILES Y TABLETS)
+   Aquí sobreescribimos los estilos SOLO cuando la pantalla es pequeña.
+   El diseño de escritorio NO se toca arriba.
+========================================================================== */
+
 @media (max-width: 1100px) {
-  .columns {
+  
+  /* 1. Ajuste de Títulos */
+  h1 {
+    font-size: 80px;
+    margin-left: 0; /* Quitamos el margen izquierdo en móvil */
+    margin-right: 0;
+    margin-bottom: 50px;
+    text-align: center; /* Centramos el título solo en móvil */
+    padding: 0 10px;
+  }
+
+  .header-content {
+    width: 100%; /* Ahora sí ocupamos el ancho para poder centrar */
+    left: 0;
+    position: absolute; /* Mantenemos absolute, pero lo ubicamos bien */
+    /* Ajustar top si es necesario, dependiendo de la imagen */
+  }
+
+  body > header > section > p {
+    margin-top: -30px;
+    text-align: center;
+    padding: 0 20px;
+  }
+  
+  /* 2. Navegación Vertical */
+  body > header > nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  body > header > nav > ul {
+    margin-left: 0;
+    margin-top: 20px;
     flex-direction: column;
     align-items: center;
+    gap: 15px;
   }
-  .columns .about {
-    max-width: 90%;
-    max-width: 400px;
-    margin-bottom: 30px;
+  
+  #inicio {
+    margin-right: 0;
   }
-  .rrss-content {
+
+  /* 3. Columnas Apiladas (Formación, Proyectos) */
+  .columns {
     flex-direction: column;
-    gap: 30px;
+    align-items: center; /* Centrar las tarjetas */
+    margin-top: 50px;
+    margin-bottom: 50px;
   }
-  .social-icon-rrss {
-    width: 120px;
-    height: 120px;
-    padding: 0;
+
+  .columns .about, 
+  .columns .project {
+    width: 90%; /* Ocupan casi todo el ancho de la pantalla */
+    max-width: 500px; /* Tope máximo */
+    margin-bottom: 30px;
+    height: auto; /* Dejar que la altura se ajuste al contenido */
+    min-height: auto;
   }
+
+  /* 4. Sección Sobre Mí */
   .about_page_1 {
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    margin-bottom: 100px;
-    margin-left: 50px;
-    margin-right: 50px;
+    margin: 20px;
   }
+
   .rocket_logo {
-    margin-left: 0;
-    margin-bottom: 30px;
-    margin-top: 30px;
-    width: 250px;
-    height: 250px;
+    margin: 0 0 30px 0; /* Quitar márgenes laterales */
+    width: 200px;
+    height: 200px;
   }
+
+  .about_text_1 {
+    margin-top: 0;
+  }
+
   .p_page_1 {
     margin-left: 0;
     margin-right: 0;
-    max-width: 95vw;
-    text-align: justify;
+    padding: 0 20px;
   }
-}
 
-/* ANIMACIONES Y EFECTOS */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
+  /* 5. Galería y Redes Sociales */
+  #page_4_body {
+    /* Cambiamos a columnas flexibles más pequeñas para móvil */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-auto-rows: auto; /* Altura automática */
+    padding: 10px;
   }
-  to {
-    opacity: 1;
+
+  .rrss-content {
+    flex-direction: column;
+    gap: 40px;
   }
-}
-img:hover {
-  transform: scale(1.05);
+
+  .social-icon-rrss {
+    padding: 20px; /* Reducir padding excesivo */
+    width: 150px;
+    height: 150px;
+  }
+
+  /* 6. Video y Formularios */
+  .youtube_video {
+    height: auto; /* Altura automática proporcional */
+    aspect-ratio: 16/9;
+  }
+
+  form {
+    width: 90%;
+  }
+  
+  input, textarea {
+    width: 100%; /* Input ocupa todo el ancho disponible */
+  }
 }
