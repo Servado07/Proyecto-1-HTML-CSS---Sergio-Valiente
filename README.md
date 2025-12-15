@@ -17,7 +17,7 @@ El desarrollo de este portafolio se centra en la presentación profesional y la 
 
 * **Menú de Navegación Rápida:** Implementación de una barra de navegación funcional (`navbar`) con enlaces directos a las secciones principales (`Sobre mí`, `Proyectos`, `Redes Sociales`).
 * **Iconografía y UX:** Uso de iconos visuales en las secciones para mejorar la comprensión y el atractivo estético del portafolio.
-* **Presencia Digital:** Integración de enlaces directos a plataformas profesionales clave como **GitHub**, **YouTube** e **Instagram**.
+* **Presencia Digital:** Integración de enlaces directos a plataformas profesionales clave como **GitHub**, **YouTube** y **Linkedin**.
 
 #### 3. Estilismo y Presentación
 
