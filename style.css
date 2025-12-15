@@ -40,7 +40,7 @@ body {
 
 .index_header {
   position: relative;
-  background-image: url(/assets/backgrounds/compu.jpg);
+  background-image: url(assets/backgrounds/compu.jpg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
