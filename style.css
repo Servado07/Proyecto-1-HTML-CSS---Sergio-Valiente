@@ -543,9 +543,16 @@ img:hover {
 
   form {
     width: 90%;
+    margin: 0 auto;
   }
   
   input, textarea {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+  }
+
+  button {
     width: 100%;
   }
 }
