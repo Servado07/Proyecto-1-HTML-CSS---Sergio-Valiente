@@ -138,7 +138,7 @@ h2 {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: stretch; /* Esto hace que todas las tarjetas tengan la misma altura total */
+  align-items: stretch;
   gap: var(--spacing);
   margin: var(--spacing);
   margin-top: 150px;
@@ -322,11 +322,9 @@ button:hover {
   box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
 }
 
-/* --- ESTILOS DE PROYECTOS --- */
-
 .columns .project {
   max-width: 350px;
-  width: 100%; /* Asegura que ocupe el ancho disponible */
+  width: 100%;
   padding: var(--spacing);
   border-radius: 12px;
   box-sizing: border-box;
@@ -335,37 +333,31 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* CAMBIO CLAVE: Usamos flex-start para pegar todo arriba */
   justify-content: flex-start; 
   transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
 }
 
-/* Fuerza al texto descriptivo a irse al fondo de la tarjeta */
 .columns .project > p {
   margin-top: auto;
   padding: 0 10px;
 }
 
-/* Estilos comunes para Imagen fija y Contenedor del Slider */
 .columns .project > img,
 .columns .project .slider-container {
   width: 100%;
-  height: 300px; /* Altura fija obligatoria para alinear ejes */
+  height: 300px;
   object-fit: cover;
   border-radius: 12px;
-  margin-bottom: 20px; /* Margen inferior uniforme */
+  margin-bottom: 20px;
 }
 
-/* Títulos de proyectos: Altura fija para alinear el inicio de las imágenes */
 h2.h2_project {
   font-family: var(--primary-font-family);
   color: var(--secondary-color);
   font-size: 32px;
   text-align: center;
   margin-bottom: 20px;
-  
-  /* Alineación y caja del título */
-  height: 90px; /* Espacio reservado para 1 o 2 líneas de título */
+  height: 90px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -586,24 +578,39 @@ img:hover {
   }
 }
 
-/* --- CARRUSEL / SLIDER --- */
 .slider-container {
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-  /* Height is controlled by the .columns .project .slider-container rule above */
 }
 
 .slider-track {
   display: flex;
   width: 300%;
-  height: 100%; /* Ocupa el 100% del contenedor padre (300px) */
+  height: 100%;
   animation: slide 12s infinite ease-in-out;
 }
 
 .slider-track img {
   width: 33.33%;
-  height: 100%; /* Fuerza a la imagen interna a llenar el carril */
+  height: 100%;
   object-fit: cover;
+  display: block;
+}
+
+.video-showcase {
+  display: flex;
+  justify-content: center;
+  margin: 50px auto 100px auto;
+  padding: 0 20px;
+  max-width: 900px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.video-showcase video {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
   display: block;
 }
 
