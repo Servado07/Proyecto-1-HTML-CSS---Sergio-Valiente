@@ -138,7 +138,7 @@ h2 {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: stretch;
+  align-items: stretch; /* Esto hace que todas las tarjetas tengan la misma altura total */
   gap: var(--spacing);
   margin: var(--spacing);
   margin-top: 150px;
@@ -322,8 +322,11 @@ button:hover {
   box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
 }
 
+/* --- ESTILOS DE PROYECTOS --- */
+
 .columns .project {
   max-width: 350px;
+  width: 100%; /* Asegura que ocupe el ancho disponible */
   padding: var(--spacing);
   border-radius: 12px;
   box-sizing: border-box;
@@ -332,21 +335,47 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  /* CAMBIO CLAVE: Usamos flex-start para pegar todo arriba */
+  justify-content: flex-start; 
   transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+/* Fuerza al texto descriptivo a irse al fondo de la tarjeta */
+.columns .project > p {
+  margin-top: auto;
+  padding: 0 10px;
+}
+
+/* Estilos comunes para Imagen fija y Contenedor del Slider */
+.columns .project > img,
+.columns .project .slider-container {
+  width: 100%;
+  height: 300px; /* Altura fija obligatoria para alinear ejes */
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 20px; /* Margen inferior uniforme */
+}
+
+/* Títulos de proyectos: Altura fija para alinear el inicio de las imágenes */
+h2.h2_project {
+  font-family: var(--primary-font-family);
+  color: var(--secondary-color);
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 20px;
+  
+  /* Alineación y caja del título */
+  height: 90px; /* Espacio reservado para 1 o 2 líneas de título */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  line-height: 1.1;
 }
 
 .columns .project:hover {
   transform: translateY(-10px);
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-}
-
-h2.h2_project {
-  font-family: var(--primary-font-family);
-  color: var(--secondary-color);
-  font-size: 40px;
-  text-align: center;
-  margin-bottom: 100px;
 }
 
 .about_page_1 {
@@ -555,4 +584,38 @@ img:hover {
   button {
     width: 100%;
   }
+}
+
+/* --- CARRUSEL / SLIDER --- */
+.slider-container {
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  /* Height is controlled by the .columns .project .slider-container rule above */
+}
+
+.slider-track {
+  display: flex;
+  width: 300%;
+  height: 100%; /* Ocupa el 100% del contenedor padre (300px) */
+  animation: slide 12s infinite ease-in-out;
+}
+
+.slider-track img {
+  width: 33.33%;
+  height: 100%; /* Fuerza a la imagen interna a llenar el carril */
+  object-fit: cover;
+  display: block;
+}
+
+@keyframes slide {
+  0% { margin-left: 0; }
+  30% { margin-left: 0; }
+  
+  35% { margin-left: -100%; }
+  65% { margin-left: -100%; }
+  
+  70% { margin-left: -200%; }
+  95% { margin-left: -200%; }
+  
+  100% { margin-left: 0; }
 }
