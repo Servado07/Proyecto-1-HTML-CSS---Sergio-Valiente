@@ -185,6 +185,10 @@ body > main > div > section > p {
   text-align: center;
 }
 
+#body_color{
+  background-color: #181818;
+}
+
 footer {
   background-color: var(--secondary-color);
   color: var(--primary-color);
