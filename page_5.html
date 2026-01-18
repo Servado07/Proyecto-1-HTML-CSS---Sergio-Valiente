@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -63,11 +63,11 @@
         </section>
         <section class="project">
           <h2 class="h2_project">La impresora que uso</h2>
-          <img
-            src="assets/images/3dprinter.png"
-            alt="ender 3 pro"
-            title="Ender 3 pro"
-          />
+          <div class="video-showcase">
+            <video autoplay loop muted playsinline>
+              <source src="assets/images/3printer_video.mp4" type="video/mp4" />
+            </video>
+          </div>
           <p>Ender 3 pro</p>
         </section>
         <section class="project">
@@ -92,7 +92,7 @@
             de Cults3D
           </p>
           <p>
-            <i>(Haz clic en la imagen para acceder a él)</i>
+            <i id="p_cults">(Haz clic en la imagen para acceder a él)</i>
           </p>
         </section>
       </div>
@@ -195,7 +195,6 @@
       <div class="video-showcase">
         <video autoplay loop muted playsinline>
           <source src="assets/images/video_3d.MP4" type="video/mp4" />
-          Tu navegador no soporta la etiqueta de video.
         </video>
       </div>
     </main>
